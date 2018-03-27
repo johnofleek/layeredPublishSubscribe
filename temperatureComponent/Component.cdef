@@ -1,0 +1,33 @@
+// temperature data generator Component.cdef
+
+sources: 
+{ 
+	temperatureMain.c
+    
+}
+
+requires:
+{
+    api:
+    {
+        le_cfg.api
+	}
+}
+
+provides:
+{
+	api:
+	{
+		temperature.api
+	}
+}
+
+cxxflags:
+{
+
+}
+
+cflags:
+{
+
+}

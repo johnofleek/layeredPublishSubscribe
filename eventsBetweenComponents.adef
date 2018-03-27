@@ -1,0 +1,51 @@
+version: 0.0.1
+
+executables:
+{
+   app = ( appComponent )
+   temperature = (temperatureComponent)
+}
+
+processes:
+{
+    run:
+    {
+        ( app )
+    }
+}
+
+processes:
+{
+    run:
+    {
+        ( temperature )
+    }
+}
+
+
+requires:
+{
+    device:
+    {
+
+    }
+    file:
+    {
+
+    }
+    configTree:
+    {
+        
+    }
+}
+
+bindings:
+{
+	app.appComponent.temperature -> temperature.temperatureComponent.temperature
+}
+
+
+start: auto
+
+sandboxed: true
+

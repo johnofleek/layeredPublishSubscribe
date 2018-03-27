@@ -1,0 +1,19 @@
+//--------------------------------------------------------------------------------------------------
+/**
+ * This event generates the temperature data
+ */
+//--------------------------------------------------------------------------------------------------
+
+DEFINE KEY_SIZE	= 16;
+
+HANDLER temperatureCbh
+(
+    string key[KEY_SIZE] IN,
+    double value IN
+);
+
+
+EVENT IncomingMessage
+(
+    temperatureCbh handler
+);
