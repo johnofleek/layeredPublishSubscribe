@@ -72,6 +72,11 @@ struct temperaturePayload_stucture
 	double value;
 };
 
+/*
+ * This function is called (I think) when the  le_event_Report requested in temperature_read()
+ * reaches the head of the event queue.
+ * Maybe this gets called multiple times if multiple event listeners subscribe with temperature_AddIncomingMessageHandler()
+ */
 void TempChangeHandler
 (
     void* reportPtr,

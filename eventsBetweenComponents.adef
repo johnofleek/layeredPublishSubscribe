@@ -2,7 +2,8 @@ version: 0.0.1
 
 executables:
 {
-   app = ( appComponent )
+   app1 = ( appComponent )
+   app2 = ( appComponent2 )
    temperature = (temperatureComponent)
 }
 
@@ -10,7 +11,15 @@ processes:
 {
     run:
     {
-        ( app )
+        ( app1 )
+    }
+}
+
+processes:
+{
+    run:
+    {
+        ( app2 )
     }
 }
 
@@ -41,7 +50,8 @@ requires:
 
 bindings:
 {
-	app.appComponent.temperature -> temperature.temperatureComponent.temperature
+	app1.appComponent.temperature -> temperature.temperatureComponent.temperature
+	app2.appComponent2.temperature -> temperature.temperatureComponent.temperature
 }
 
 

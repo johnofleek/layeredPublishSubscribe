@@ -12,18 +12,18 @@
  */
 void main_temperatureReading_cbh (const char* key, double value, void* contextPtr)
 {
-	LE_INFO("component 1 got event with %s %f", key,value);
+	LE_INFO("component2 git event with %s %f", key,value);
 }
 
 
 
 COMPONENT_INIT
 {   
-    LE_INFO("started1");
+    LE_INFO("started2");
     
     int stuff = 2;
 
     temperature_AddIncomingMessageHandler (main_temperatureReading_cbh, &stuff );
 
-    LE_INFO("start done1");
+    LE_INFO("start done2");
 }

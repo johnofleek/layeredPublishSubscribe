@@ -117,6 +117,15 @@ build $builddir/component/65bdf2be8728b548940eefd642762706/obj/f0e40a275883a01d2
 build $builddir/component/65bdf2be8728b548940eefd642762706/obj/_componentMain.c.o: CompileC $builddir/component/65bdf2be8728b548940eefd642762706/src/_componentMain.c
   cFlags = $cFlags -I$builddir/component/65bdf2be8728b548940eefd642762706/src -I$builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/client -DLE_COMPONENT_NAME=appComponent -DLE_LOG_SESSION=appComponent_LogSession  -DLE_LOG_LEVEL_FILTER_PTR=appComponent_LogLevelFilterPtr  "-DCOMPONENT_INIT=LE_CI_LINKAGE LE_SHARED void _appComponent_COMPONENT_INIT()"
 
+build _build_eventsBetweenComponents/wp85/staging/read-only/lib/libComponent_appComponent2.so: LinkCxxLib $builddir/component/2f3a228578830941485fac5b3b04001e/obj/17dd7cbc13a20695e5e01dd035f19f80.o $builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/client/temperature_client.c.o $builddir/component/2f3a228578830941485fac5b3b04001e/obj/_componentMain.c.o | /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/build/wp85/framework/lib/liblegato.so
+  ldFlags =  -L_build_eventsBetweenComponents/wp85/staging/read-only/lib -Wl,--enable-new-dtags,-rpath="\$$ORIGIN/../lib" "-L$$LEGATO_BUILD/framework/lib" -llegato -lpthread -lrt -lm
+
+build $builddir/component/2f3a228578830941485fac5b3b04001e/obj/17dd7cbc13a20695e5e01dd035f19f80.o: CompileCxx /home/john/workspace/legato/apps/john/layeredPublishSubscribe/appComponent2/main.cpp || $builddir/ $builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/client/temperature_interface.h $builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/client/temperature_messages.h
+  cxxFlags = $cxxFlags -I$builddir/component/2f3a228578830941485fac5b3b04001e/src -I$builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/client -DLE_COMPONENT_NAME=appComponent2 -DLE_LOG_SESSION=appComponent2_LogSession  -DLE_LOG_LEVEL_FILTER_PTR=appComponent2_LogLevelFilterPtr  "-DCOMPONENT_INIT=LE_CI_LINKAGE LE_SHARED void _appComponent2_COMPONENT_INIT()"
+
+build $builddir/component/2f3a228578830941485fac5b3b04001e/obj/_componentMain.c.o: CompileC $builddir/component/2f3a228578830941485fac5b3b04001e/src/_componentMain.c
+  cFlags = $cFlags -I$builddir/component/2f3a228578830941485fac5b3b04001e/src -I$builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/client -DLE_COMPONENT_NAME=appComponent2 -DLE_LOG_SESSION=appComponent2_LogSession  -DLE_LOG_LEVEL_FILTER_PTR=appComponent2_LogLevelFilterPtr  "-DCOMPONENT_INIT=LE_CI_LINKAGE LE_SHARED void _appComponent2_COMPONENT_INIT()"
+
 build _build_eventsBetweenComponents/wp85/staging/read-only/lib/libComponent_temperatureComponent.so: LinkCLib $builddir/component/8f0383e17e090f78c957b17a8f46b256/obj/7d754c2b2c4cfe39795d9ab35960cd17.o $builddir/api/df1eb47983827ed1845ab8920373af33/client/le_cfg_client.c.o $builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/server/temperature_server.o $builddir/component/8f0383e17e090f78c957b17a8f46b256/obj/_componentMain.c.o | /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/build/wp85/framework/lib/liblegato.so
   ldFlags =  -L_build_eventsBetweenComponents/wp85/staging/read-only/lib -Wl,--enable-new-dtags,-rpath="\$$ORIGIN/../lib" "-L$$LEGATO_BUILD/framework/lib" -llegato -lpthread -lrt -lm
 
@@ -126,11 +135,17 @@ build $builddir/component/8f0383e17e090f78c957b17a8f46b256/obj/7d754c2b2c4cfe397
 build $builddir/component/8f0383e17e090f78c957b17a8f46b256/obj/_componentMain.c.o: CompileC $builddir/component/8f0383e17e090f78c957b17a8f46b256/src/_componentMain.c
   cFlags = $cFlags -I$builddir/component/8f0383e17e090f78c957b17a8f46b256/src -I$builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/server -I$builddir/api/df1eb47983827ed1845ab8920373af33/client -DLE_COMPONENT_NAME=temperatureComponent -DLE_LOG_SESSION=temperatureComponent_LogSession  -DLE_LOG_LEVEL_FILTER_PTR=temperatureComponent_LogLevelFilterPtr  "-DCOMPONENT_INIT=LE_CI_LINKAGE LE_SHARED void _temperatureComponent_COMPONENT_INIT()"
 
-build $builddir/app/eventsBetweenComponents/obj/app/_main.c.o: CompileC _build_eventsBetweenComponents/wp85/app/eventsBetweenComponents/src/app/_main.c
-  cFlags = $cFlags -DLE_COMPONENT_NAME=app_exe -DLE_LOG_SESSION=app_exe_LogSession -DLE_LOG_LEVEL_FILTER_PTR=app_exe_LogLevelFilterPtr 
+build $builddir/app/eventsBetweenComponents/obj/app1/_main.c.o: CompileC _build_eventsBetweenComponents/wp85/app/eventsBetweenComponents/src/app1/_main.c
+  cFlags = $cFlags -DLE_COMPONENT_NAME=app1_exe -DLE_LOG_SESSION=app1_exe_LogSession -DLE_LOG_LEVEL_FILTER_PTR=app1_exe_LogLevelFilterPtr 
 
-build $builddir/app/eventsBetweenComponents/staging/read-only/bin/app: LinkCExe $builddir/app/eventsBetweenComponents/obj/app/_main.c.o | _build_eventsBetweenComponents/wp85/staging/read-only/lib/libComponent_appComponent.so /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/build/wp85/framework/lib/liblegato.so /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/build/$target/framework/lib/liblegato.so
+build $builddir/app/eventsBetweenComponents/staging/read-only/bin/app1: LinkCExe $builddir/app/eventsBetweenComponents/obj/app1/_main.c.o | _build_eventsBetweenComponents/wp85/staging/read-only/lib/libComponent_appComponent.so /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/build/wp85/framework/lib/liblegato.so /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/build/$target/framework/lib/liblegato.so
   ldFlags = -rdynamic -Wl,--enable-new-dtags,-rpath="\$$ORIGIN/../lib" -L_build_eventsBetweenComponents/wp85/staging/read-only/lib "-L_build_eventsBetweenComponents/wp85/staging/read-only/lib" -lComponent_appComponent "-L_build_eventsBetweenComponents/wp85/staging/read-only/lib" -lComponent_appComponent "-L$$LEGATO_BUILD/framework/lib" -llegato -lpthread -lrt -ldl -lm $ldFlags
+
+build $builddir/app/eventsBetweenComponents/obj/app2/_main.c.o: CompileC _build_eventsBetweenComponents/wp85/app/eventsBetweenComponents/src/app2/_main.c
+  cFlags = $cFlags -DLE_COMPONENT_NAME=app2_exe -DLE_LOG_SESSION=app2_exe_LogSession -DLE_LOG_LEVEL_FILTER_PTR=app2_exe_LogLevelFilterPtr 
+
+build $builddir/app/eventsBetweenComponents/staging/read-only/bin/app2: LinkCExe $builddir/app/eventsBetweenComponents/obj/app2/_main.c.o | _build_eventsBetweenComponents/wp85/staging/read-only/lib/libComponent_appComponent2.so /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/build/wp85/framework/lib/liblegato.so /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/build/$target/framework/lib/liblegato.so
+  ldFlags = -rdynamic -Wl,--enable-new-dtags,-rpath="\$$ORIGIN/../lib" -L_build_eventsBetweenComponents/wp85/staging/read-only/lib "-L_build_eventsBetweenComponents/wp85/staging/read-only/lib" -lComponent_appComponent2 "-L_build_eventsBetweenComponents/wp85/staging/read-only/lib" -lComponent_appComponent2 "-L$$LEGATO_BUILD/framework/lib" -llegato -lpthread -lrt -ldl -lm $ldFlags
 
 build $builddir/app/eventsBetweenComponents/obj/temperature/_main.c.o: CompileC _build_eventsBetweenComponents/wp85/app/eventsBetweenComponents/src/temperature/_main.c
   cFlags = $cFlags -DLE_COMPONENT_NAME=temperature_exe -DLE_LOG_SESSION=temperature_exe_LogSession -DLE_LOG_LEVEL_FILTER_PTR=temperature_exe_LogLevelFilterPtr 
@@ -140,9 +155,11 @@ build $builddir/app/eventsBetweenComponents/staging/read-only/bin/temperature: L
 
 build $builddir/app/eventsBetweenComponents/staging/read-only/lib/libComponent_appComponent.so : HardLink _build_eventsBetweenComponents/wp85/staging/read-only/lib/libComponent_appComponent.so
 
+build $builddir/app/eventsBetweenComponents/staging/read-only/lib/libComponent_appComponent2.so : HardLink _build_eventsBetweenComponents/wp85/staging/read-only/lib/libComponent_appComponent2.so
+
 build $builddir/app/eventsBetweenComponents/staging/read-only/lib/libComponent_temperatureComponent.so : HardLink _build_eventsBetweenComponents/wp85/staging/read-only/lib/libComponent_temperatureComponent.so
 
-build $builddir/app/eventsBetweenComponents/staging/info.properties : MakeAppInfoProperties | $builddir/app/eventsBetweenComponents/staging/read-only/lib/libComponent_appComponent.so $builddir/app/eventsBetweenComponents/staging/read-only/lib/libComponent_temperatureComponent.so $builddir/app/eventsBetweenComponents/staging/read-only/bin/app $builddir/app/eventsBetweenComponents/staging/read-only/bin/temperature $builddir/app/eventsBetweenComponents/staging/root.cfg
+build $builddir/app/eventsBetweenComponents/staging/info.properties : MakeAppInfoProperties | $builddir/app/eventsBetweenComponents/staging/read-only/lib/libComponent_appComponent.so $builddir/app/eventsBetweenComponents/staging/read-only/lib/libComponent_appComponent2.so $builddir/app/eventsBetweenComponents/staging/read-only/lib/libComponent_temperatureComponent.so $builddir/app/eventsBetweenComponents/staging/read-only/bin/app1 $builddir/app/eventsBetweenComponents/staging/read-only/bin/app2 $builddir/app/eventsBetweenComponents/staging/read-only/bin/temperature $builddir/app/eventsBetweenComponents/staging/root.cfg
   name = eventsBetweenComponents
   version = 0.0.1
   workingDir = $builddir/app/eventsBetweenComponents
@@ -173,5 +190,5 @@ build $builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/server/temperature_server.c
   ifgenFlags = --gen-server --gen-server-interface --gen-local --name-prefix temperature --file-prefix temperature $ifgenFlags
   outputDir = $builddir/api/d8c85ffe38d9f8e13e3b320e7b41ab9a/server
 
-build _build_eventsBetweenComponents/wp85/build.ninja: RegenNinjaScript | /home/john/workspace/legato/apps/john/layeredPublishSubscribe/eventsBetweenComponents.adef /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/interfaces/le_cfg.api /home/john/workspace/legato/apps/john/layeredPublishSubscribe/appComponent/Component.cdef /home/john/workspace/legato/apps/john/layeredPublishSubscribe/temperature.api /home/john/workspace/legato/apps/john/layeredPublishSubscribe/temperatureComponent/Component.cdef
+build _build_eventsBetweenComponents/wp85/build.ninja: RegenNinjaScript | /home/john/workspace/legato/apps/john/layeredPublishSubscribe/eventsBetweenComponents.adef /home/john/legato/packages/legato.framework.16.10.3.wp85-wp750x-201705031608/resources/legato/interfaces/le_cfg.api /home/john/workspace/legato/apps/john/layeredPublishSubscribe/appComponent/Component.cdef /home/john/workspace/legato/apps/john/layeredPublishSubscribe/appComponent2/Component.cdef /home/john/workspace/legato/apps/john/layeredPublishSubscribe/temperature.api /home/john/workspace/legato/apps/john/layeredPublishSubscribe/temperatureComponent/Component.cdef
 

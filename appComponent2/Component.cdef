@@ -1,0 +1,24 @@
+// LCD application Component.cdef 
+
+sources: 
+{
+    main.cpp  
+}
+
+requires:
+{
+    api:
+    {
+		temperature.api				// internal component to this project
+    }
+}
+
+cxxflags:
+{
+
+}
+
+cflags:
+{
+
+}
