@@ -7,7 +7,7 @@ Demostrates an event being generated in one component and triggered in another c
 
 
 ## Event triggered in (IPC client) 
-There are two apps that want to receive the temperature event. They both register for the event and bothe receive events from the temperatureComponent
+There are two apps that want to receive the temperature event. They both register for the event and both receive events from the temperatureComponent
 
 ./appComponent/main.cpp
 
