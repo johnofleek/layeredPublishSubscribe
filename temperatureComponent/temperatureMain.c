@@ -78,15 +78,15 @@ void TempChangeHandler
     void* secondLayerHandlerFunc
 )
 {
-	struct temperaturePayload_stucture *payload_struct;
+	struct temperaturePayload_stucture *payload_struct = reportPtr;
 	//= reportPtr ;
     //int32_t* temperaturePtr = reportPtr; // reportPtr;
     temperature_temperatureCbhFunc_t clientHandlerFunc = secondLayerHandlerFunc;
 
-    LE_INFO("queue call to others %f", payload_struct->value );
+    LE_INFO("queue call to others %s %f", payload_struct->keyString, payload_struct->value );
 
     // send the data to the functions registered as secondLayerHandlerFunc
-    clientHandlerFunc("h",1, le_event_GetContextPtr());
+    clientHandlerFunc(payload_struct->keyString,payload_struct->value , le_event_GetContextPtr());
 }
 
 /*
@@ -196,7 +196,8 @@ le_event_Id_t temperatureMain_retrieveTemperatureChange_eventId(void)
 
 COMPONENT_INIT
 {
+	struct temperaturePayload_stucture temperaturePayload_struct;
 	// TempChangeEventId = le_event_CreateId("TempChange", sizeof(temperature_temperatureCbhFunc_t));
-	TempChangeEventId = le_event_CreateId("TempChange", sizeof(temperaturePayload_stucture));
+	TempChangeEventId = le_event_CreateId("TempChange", sizeof(temperaturePayload_struct));
 	temperature_timer_init();
 }
